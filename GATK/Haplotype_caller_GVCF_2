@@ -1,0 +1,28 @@
+#!/bin/bash
+#
+#SBATCH --mem=115000
+#SBATCH --job-name=HC1
+#SBATCH -p rausherlab
+#SBATCH --mail-user=ac407
+#SBATCH --mail-type=ALL
+#SBATCH --nodelist=dcc-rausherlab-01
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=5
+
+export PATH=/opt/apps/slurm/java/jdk1.8.0_60/jre/bin:$PATH
+export INPATH=/work/rausher/ac407/xtomeV2/gatk/splitntrim/170215
+export OUTPATH=/work/rausher/ac407/xtomeV2/gatk/haplotypecaller/170216
+
+#first set of two
+for i in "L_13_CCR_L1-13_" "L_14_CCR_L1-14_" "L_15_CCR_L1-15_" "L_16_Site1_L1-16_" "L_17_Site1_L1-17_" "L_18_Site1_L1-18_" "L_1_LTS_L1-1_" "L_22_CHAD_L2-19_" "L_23_CHAD_L2-20_" "L_24_CHAD_L2-21_" "L_2_LTS_L1-2_" "L_38_TX_L2-14_" "L_39_GA_L2-15_" "L_3_LTS_L1-8_" "L_4_CCF_L1-4_" "L_50_KY_L3-16_" "L_53_Kent_L3-19_" "L_54_Kent_L3-20_" "L_55_Kent_L3-1_" "L_56_KS_L3-2_" "L_57_KS_L3-3_" "L_58_KS_L3-4_" "L_5_CCF_L1-5_" "L_64_POL_L3-5_" "L_65_POL_L3-6_" "L_66_POL_L3-7_" "L_6_CCF_L1-6_" "L_7_PCB_L1-7_" "L_8_PCB_L1-3_" "L_9_PCB_L1-9_" "A_74_Au2.2_L3-14_"
+do
+
+java -jar /dscrhome/jlr42/GenomeAnalysisTK.jar \
+  -T HaplotypeCaller \
+  -R /dscrhome/jlr42/Ipomoea_sequence_data/PacBioSeq./piloncorrectedgenome.fasta \
+  -I $INPATH/$i.bam \
+  -dontUseSoftClippedBases \
+  -o $OUTPATH/$i.g.vcf \
+  -ERC GVCF
+
+done

@@ -1,0 +1,3 @@
+Align_all_individuals_pass1corrected - Copy.sh - Script to align all transcriptome reads using STAR 2-pass (Dobin and Gingeras 2015), first pass
+Align_all_individuals_pass2corrected.sh - Script to align all transcriptome reads using STAR 2-pass (Dobin and Gingeras 2015), second pass
+STAR_genome_build_public.sh - Script to index our genome assembly for alignment using STAR 2-pass (Dobin and Gingeras 2015)

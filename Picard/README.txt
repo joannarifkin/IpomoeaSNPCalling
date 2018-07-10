@@ -1,0 +1,1 @@
+Picard_process_*_set - Scripts to use PicardTools to clean alignments, convert SAM files to BAM files, add read groups, sort BAM files, and mark duplicate reads.
